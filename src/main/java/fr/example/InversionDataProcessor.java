@@ -115,143 +115,142 @@ public class InversionDataProcessor {
     
     /**
      * Fonction mockup qui retourne les définitions possibles d'un mot
-     * Un mot peut avoir plusieurs définitions (pour ses différents sens)
+     * Un mot peut avoir plusieurs sens, chaque sens a une définition
+     * Cette méthode liste tous les sens du mot et appelle getDefinitionForSens pour chacun
      * @param mot Le mot à définir
-     * @return Liste des définitions possibles pour ce mot
+     * @return Liste des définitions (une par sens) pour ce mot
      */
     public List<String> getDefinitionsForMot(String mot) {
-        // Mockup: retourne une liste de définitions possibles pour le mot
+        // Liste des définitions pour ce mot
         List<String> definitions = new ArrayList<>();
         
-        Map<String, List<String>> motDefinitions = new HashMap<>();
+        // Map des sens connus pour chaque mot
+        Map<String, List<String>> motSens = new HashMap<>();
         
-        // Définitions pour "coupable"
-        List<String> coupableDefs = new ArrayList<>();
-        coupableDefs.add("Qui a commis une faute ou un délit et mérite une punition.");
-        coupableDefs.add("Qui est responsable d'une action répréhensible.");
-        coupableDefs.add("Qui peut être blâmé pour quelque chose.");
-        motDefinitions.put("coupable", coupableDefs);
+        // Sens pour "coupable"
+        List<String> coupableSens = new ArrayList<>();
+        coupableSens.add("coupable#0");
+        coupableSens.add("coupable#1");
+        coupableSens.add("coupable#2");
+        motSens.put("coupable", coupableSens);
         
-        // Définitions pour "abrupt"
-        List<String> abruptDefs = new ArrayList<>();
-        abruptDefs.add("Qui est escarpé, très pentu.");
-        abruptDefs.add("Qui est soudain, brusque.");
-        abruptDefs.add("Qui manque de douceur ou de progressivité.");
-        motDefinitions.put("abrupt", abruptDefs);
+        // Sens pour "abrupt"
+        List<String> abruptSens = new ArrayList<>();
+        abruptSens.add("abrupt#0");
+        abruptSens.add("abrupt#1");
+        motSens.put("abrupt", abruptSens);
         
-        // Définitions pour "prévenu"
-        List<String> prevenuDefs = new ArrayList<>();
-        prevenuDefs.add("Qui est averti ou informé à l'avance.");
-        prevenuDefs.add("Personne accusée dans une procédure pénale.");
-        prevenuDefs.add("Qui a reçu un avis ou une notification.");
-        motDefinitions.put("prévenu", prevenuDefs);
+        // Sens pour "prévenu"
+        List<String> prevenuSens = new ArrayList<>();
+        prevenuSens.add("prévenu#0");
+        prevenuSens.add("prévenu#1");
+        motSens.put("prévenu", prevenuSens);
         
-        // Définitions pour "conformer"
-        List<String> conformerDefs = new ArrayList<>();
-        conformerDefs.add("Rendre conforme, adapter à un modèle ou à une règle.");
-        conformerDefs.add("Se soumettre à une norme ou à une autorité.");
-        conformerDefs.add("Donner une forme particulière à quelque chose.");
-        motDefinitions.put("conformer", conformerDefs);
+        // Sens pour "conformer"
+        List<String> conformerSens = new ArrayList<>();
+        conformerSens.add("conformer#0");
+        conformerSens.add("conformer#1");
+        conformerSens.add("conformer#2");
+        motSens.put("conformer", conformerSens);
         
-        // Définitions pour "ignicole"
-        List<String> ignicoleDefs = new ArrayList<>();
-        ignicoleDefs.add("Relatif au feu ou à la combustion.");
-        ignicoleDefs.add("Qui peut s'enflammer facilement.");
-        motDefinitions.put("ignicole", ignicoleDefs);
+        // Sens pour "ignicole"
+        List<String> ignicoleSens = new ArrayList<>();
+        ignicoleSens.add("ignicole#0");
+        ignicoleSens.add("ignicole#1");
+        motSens.put("ignicole", ignicoleSens);
         
-        // Définitions pour "foulage"
-        List<String> foulageDefs = new ArrayList<>();
-        foulageDefs.add("Action de fouler, de presser avec les pieds.");
-        foulageDefs.add("Opération de traitement des tissus par foulage.");
-        motDefinitions.put("foulage", foulageDefs);
+        // Sens pour "foulage"
+        List<String> foulageSens = new ArrayList<>();
+        foulageSens.add("foulage#0");
+        foulageSens.add("foulage#1");
+        motSens.put("foulage", foulageSens);
         
-        // Définitions pour "consomption"
-        List<String> consomptionDefs = new ArrayList<>();
-        consomptionDefs.add("Action de consommer, de dépenser.");
-        consomptionDefs.add("Quantité consommée.");
-        consomptionDefs.add("Usure progressive par l'usage.");
-        motDefinitions.put("consomption", consomptionDefs);
+        // Sens pour "consomption"
+        List<String> consomptionSens = new ArrayList<>();
+        consomptionSens.add("consomption#0");
+        consomptionSens.add("consomption#1");
+        consomptionSens.add("consomption#2");
+        motSens.put("consomption", consomptionSens);
         
-        // Définitions pour "avant"
-        List<String> avantDefs = new ArrayList<>();
-        avantDefs.add("Qui précède dans le temps ou dans l'espace.");
-        avantDefs.add("Devant, en première position.");
-        avantDefs.add("Auparavant, dans le passé.");
-        motDefinitions.put("avant", avantDefs);
+        // Sens pour "avant"
+        List<String> avantSens = new ArrayList<>();
+        avantSens.add("avant#0");
+        avantSens.add("avant#1");
+        avantSens.add("avant#2");
+        motSens.put("avant", avantSens);
         
-        // Définitions pour "wingsuit"
-        List<String> wingsuitDefs = new ArrayList<>();
-        wingsuitDefs.add("Combinaison ailée utilisée pour le vol en chute libre.");
-        wingsuitDefs.add("Équipement permettant de planer lors d'un saut.");
-        motDefinitions.put("wingsuit", wingsuitDefs);
+        // Sens pour "wingsuit"
+        List<String> wingsuitSens = new ArrayList<>();
+        wingsuitSens.add("wingsuit#0");
+        wingsuitSens.add("wingsuit#1");
+        motSens.put("wingsuit", wingsuitSens);
         
-        // Définitions pour "chamarré"
-        List<String> chamarreDefs = new ArrayList<>();
-        chamarreDefs.add("Qui est orné de couleurs vives et contrastées.");
-        chamarreDefs.add("Qui a un aspect voyants et multicolore.");
-        motDefinitions.put("chamarré", chamarreDefs);
+        // Sens pour "chamarré"
+        List<String> chamarreSens = new ArrayList<>();
+        chamarreSens.add("chamarré#0");
+        motSens.put("chamarré", chamarreSens);
         
-        // Définitions pour "débuter"
-        List<String> debuterDefs = new ArrayList<>();
-        debuterDefs.add("Commencer quelque chose.");
-        debuterDefs.add("Faire ses premiers pas dans un domaine.");
-        debuterDefs.add("Inaugurer, lancer une activité.");
-        motDefinitions.put("débuter", debuterDefs);
+        // Sens pour "débuter"
+        List<String> debuterSens = new ArrayList<>();
+        debuterSens.add("débuter#0");
+        debuterSens.add("débuter#1");
+        debuterSens.add("débuter#2");
+        motSens.put("débuter", debuterSens);
         
-        // Définitions pour "liseron"
-        List<String> liseronDefs = new ArrayList<>();
-        liseronDefs.add("Plante grimpante de la famille des convolvulacées.");
-        liseronDefs.add("Fleur en forme de trompette.");
-        motDefinitions.put("liseron", liseronDefs);
+        // Sens pour "liseron"
+        List<String> liseronSens = new ArrayList<>();
+        liseronSens.add("liseron#0");
+        liseronSens.add("liseron#1");
+        motSens.put("liseron", liseronSens);
         
-        // Définitions pour "quatrième"
-        List<String> quatriemeDefs = new ArrayList<>();
-        quatriemeDefs.add("Qui occupe le rang numéro quatre dans une série.");
-        quatriemeDefs.add("Qui vient après le troisième.");
-        motDefinitions.put("quatrième", quatriemeDefs);
+        // Sens pour "quatrième"
+        List<String> quatriemeSens = new ArrayList<>();
+        quatriemeSens.add("quatrième#0");
+        quatriemeSens.add("quatrième#1");
+        motSens.put("quatrième", quatriemeSens);
         
-        // Définitions pour "léniniste"
-        List<String> leninisteDefs = new ArrayList<>();
-        leninisteDefs.add("Partisan des théories de Lénine.");
-        leninisteDefs.add("Relatif au léninisme ou à ses principes.");
-        motDefinitions.put("léniniste", leninisteDefs);
+        // Sens pour "léniniste"
+        List<String> leninisteSens = new ArrayList<>();
+        leninisteSens.add("léniniste#0");
+        motSens.put("léniniste", leninisteSens);
         
-        // Définitions pour "grandiloquent"
-        List<String> grandiloquentDefs = new ArrayList<>();
-        grandiloquentDefs.add("Qui s'exprime avec emphase, de manière pompeuse.");
-        grandiloquentDefs.add("Qui utilise un langage trop solennel.");
-        motDefinitions.put("grandiloquent", grandiloquentDefs);
+        // Sens pour "grandiloquent"
+        List<String> grandiloquentSens = new ArrayList<>();
+        grandiloquentSens.add("grandiloquent#0");
+        grandiloquentSens.add("grandiloquent#1");
+        motSens.put("grandiloquent", grandiloquentSens);
         
-        // Définitions pour "attablé"
-        List<String> attableDefs = new ArrayList<>();
-        attableDefs.add("Qui est assis à table pour manger.");
-        attableDefs.add("Qui participe à un repas.");
-        motDefinitions.put("attablé", attableDefs);
+        // Sens pour "attablé"
+        List<String> attableSens = new ArrayList<>();
+        attableSens.add("attablé#0");
+        motSens.put("attablé", attableSens);
         
-        // Définitions pour "avalé"
-        List<String> avaleDefs = new ArrayList<>();
-        avaleDefs.add("Qui a été avalé, ingéré.");
-        avaleDefs.add("Qui a été accepté sans discussion.");
-        motDefinitions.put("avalé", avaleDefs);
+        // Sens pour "avalé"
+        List<String> avaleSens = new ArrayList<>();
+        avaleSens.add("avalé#0");
+        avaleSens.add("avalé#1");
+        motSens.put("avalé", avaleSens);
         
-        // Définitions pour "gourrer"
-        List<String> gourrerDefs = new ArrayList<>();
-        gourrerDefs.add("Faire une erreur, se tromper.");
-        gourrerDefs.add("Commettre une faute par négligence.");
-        motDefinitions.put("gourrer", gourrerDefs);
+        // Sens pour "gourrer"
+        List<String> gourrerSens = new ArrayList<>();
+        gourrerSens.add("gourrer#0");
+        motSens.put("gourrer", gourrerSens);
         
-        // Définitions pour "éclusier"
-        List<String> eclusierDefs = new ArrayList<>();
-        eclusierDefs.add("Personne chargée de la manœuvre des écluses.");
-        eclusierDefs.add("Gardien d'une écluse.");
-        motDefinitions.put("éclusier", eclusierDefs);
+        // Sens pour "éclusier"
+        List<String> eclusierSens = new ArrayList<>();
+        eclusierSens.add("éclusier#0");
+        motSens.put("éclusier", eclusierSens);
         
-        // Si le mot a des définitions spécifiques
-        if (motDefinitions.containsKey(mot)) {
-            return motDefinitions.get(mot);
+        // Si le mot a des sens définis
+        if (motSens.containsKey(mot)) {
+            // Pour chaque sens du mot, appeler getDefinitionForSens
+            for (String sens : motSens.get(mot)) {
+                definitions.add(getDefinitionForSens(sens));
+            }
+            return definitions;
         }
         
-        // Définition générique
+        // Si le mot n'a pas de sens définis, retourner une définition générique
         definitions.add("Définition de " + mot + ".");
         return definitions;
     }
